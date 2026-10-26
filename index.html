@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Notes App</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <h2>📝 Digital Notes</h2>
+      <button id="newNoteBtn" class="primary-btn">+ New Note</button>
+
+      <nav>
+        <button class="nav-btn active" data-filter="all">📚 All Notes</button>
+        <button class="nav-btn" data-filter="pinned">📌 Pinned Notes</button>
+        <button class="nav-btn" data-filter="recent">🕒 Recent Notes</button>
+      </nav>
+
+      <div class="sidebar-stats">
+        <p>Total Notes: <strong id="totalNotes">0</strong></p>
+        <p>Pinned Notes: <strong id="pinnedNotes">0</strong></p>
+      </div>
+
+      <button id="themeToggle" class="secondary-btn">🌙 Toggle Theme</button>
+      <button id="exportAllBtn" class="secondary-btn">⬇ Export All Notes</button>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <h1>My Notes</h1>
+          <p>Write down your ideas and keep them safe.</p>
+        </div>
+        <input id="searchInput" type="search" placeholder="🔍 Search notes...">
+      </header>
+
+      <section id="notesGrid" class="notes-grid"></section>
+    </main>
+  </div>
+
+  <div id="noteModal" class="modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2 id="modalTitle">Create New Note</h2>
+        <button type="button" id="closeModal" class="close-btn" aria-label="Close">×</button>
+      </div>
+
+      <form id="noteForm">
+        <label for="noteTitle">Note Title</label>
+        <input id="noteTitle" type="text" placeholder="Enter note title">
+
+        <label for="noteContent">Note Content</label>
+        <textarea id="noteContent" rows="8" placeholder="Write your note here..."></textarea>
+
+        <label>Choose Note Color</label>
+        <div class="color-options">
+          <button type="button" class="color-btn yellow selected" data-color="yellow" aria-label="Yellow"></button>
+          <button type="button" class="color-btn blue" data-color="blue" aria-label="Blue"></button>
+          <button type="button" class="color-btn pink" data-color="pink" aria-label="Pink"></button>
+          <button type="button" class="color-btn green" data-color="green" aria-label="Green"></button>
+          <button type="button" class="color-btn purple" data-color="purple" aria-label="Purple"></button>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" id="cancelNoteBtn" class="secondary-btn">Cancel</button>
+          <button type="submit" id="saveNoteBtn" class="primary-btn">Save Note</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

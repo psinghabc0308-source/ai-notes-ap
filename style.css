@@ -1,0 +1,415 @@
+
+:root {
+  --bg: #f5f7fb;
+  --surface: #ffffff;
+  --text: #202438;
+  --muted: #777f92;
+  --border: #e4e7ef;
+  --primary: #6258e8;
+  --shadow: 0 8px 28px rgba(33, 40, 75, 0.07);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.2s, color 0.2s;
+}
+
+body.dark-mode {
+  --bg: #151827;
+  --surface: #202438;
+  --text: #f4f5fb;
+  --muted: #b0b6c8;
+  --border: #373d52;
+  --primary: #938bff;
+  --shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 255px minmax(0, 1fr);
+}
+
+.sidebar {
+  padding: 28px 18px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sidebar h2 {
+  font-size: 22px;
+  margin: 0 0 12px;
+}
+
+.primary-btn,
+.secondary-btn,
+.nav-btn {
+  padding: 12px 14px;
+  border: 0;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.primary-btn {
+  color: white;
+  background: #6258e8;
+}
+
+.secondary-btn,
+.nav-btn {
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+.primary-btn:hover,
+.secondary-btn:hover,
+.nav-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.sidebar nav {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.nav-btn {
+  text-align: left;
+}
+
+.nav-btn.active {
+  color: white;
+  background: #6258e8;
+  border-color: #6258e8;
+}
+
+.sidebar-stats {
+  margin-top: auto;
+  padding: 15px 0;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.sidebar-stats p {
+  margin: 4px 0;
+}
+
+.main-content {
+  min-width: 0;
+  padding: 34px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.topbar h1 {
+  margin: 0 0 8px;
+  font-size: 30px;
+}
+
+.topbar p {
+  margin: 0;
+  color: var(--muted);
+}
+
+#searchInput {
+  width: min(320px, 100%);
+  padding: 13px 15px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
+}
+
+#searchInput:focus,
+input:focus,
+textarea:focus {
+  border-color: var(--primary);
+}
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
+  align-items: start;
+  gap: 20px;
+}
+
+.note-card {
+  min-width: 0;
+  padding: 19px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  overflow-wrap: anywhere;
+}
+
+.note-card.yellow,
+.color-btn.yellow {
+  background: #fff3bf;
+  color: #413817;
+}
+
+.note-card.blue,
+.color-btn.blue {
+  background: #dceeff;
+  color: #193d60;
+}
+
+.note-card.pink,
+.color-btn.pink {
+  background: #ffe0e9;
+  color: #633044;
+}
+
+.note-card.green,
+.color-btn.green {
+  background: #dcf8e7;
+  color: #204a31;
+}
+
+.note-card.purple,
+.color-btn.purple {
+  background: #eee2ff;
+  color: #483269;
+}
+
+.note-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.note-card h3 {
+  margin: 0 0 14px;
+  font-size: 19px;
+  overflow-wrap: anywhere;
+}
+
+.pin-label {
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.note-content {
+  min-height: 45px;
+  line-height: 1.65;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.note-date {
+  margin-top: 18px;
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+.note-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 16px;
+  padding-top: 13px;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.note-action {
+  padding: 8px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.65);
+  color: #252525;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.note-action:hover {
+  background: white;
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  padding: 55px 20px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.empty-state h3 {
+  color: var(--text);
+}
+
+.empty-state button {
+  padding: 11px 16px;
+  border: 0;
+  border-radius: 9px;
+  background: var(--primary);
+  color: white;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: rgba(15, 20, 40, 0.6);
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-box {
+  width: min(540px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 25px;
+  border-radius: 18px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.modal-header h2 {
+  margin: 0;
+}
+
+.close-btn {
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: 28px;
+}
+
+#noteForm {
+  display: grid;
+  gap: 10px;
+}
+
+#noteForm label {
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+#noteForm input,
+#noteForm textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--bg);
+  color: var(--text);
+  outline: none;
+}
+
+#noteForm textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.color-options {
+  display: flex;
+  gap: 10px;
+  margin: 5px 0 15px;
+}
+
+.color-btn {
+  width: 31px;
+  height: 31px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+}
+
+.color-btn.selected {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+@media (max-width: 800px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+    padding: 20px;
+  }
+
+  .sidebar-stats {
+    margin-top: 0;
+  }
+
+  .main-content {
+    padding: 22px 16px;
+  }
+
+  .topbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  #searchInput {
+    width: 100%;
+  }
+
+  .notes-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 420px) {
+  .notes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-box {
+    padding: 18px;
+  }
+}
